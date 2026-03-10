@@ -129,7 +129,7 @@ ln -s "/d/code/projects/openclaw-juhe" ~/.openclaw/extensions/juhe
   "plugins": {
     "load": {
       "paths": [
-        "D:\\code\\聚合聊天\\openclaw-juhe"
+        "D:\\code\\projects\\openclaw-juhe"
       ]
     }
   }
