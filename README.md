@@ -313,7 +313,7 @@ A: 在群组配置中设置 `requireMention: true`。
 
 ## 相关项目
 
-- [claude-client](https://github.com/Hanson/claude-client) - Claude AI 客户端
+- [claude-client](https://github.com/Hanson/claude-client) - 📱 用手机远程写代码！通过飞书控制本地 Claude Code（当前支持飞书，后续可能支持更多 IM）
 
 ## 许可证
 
