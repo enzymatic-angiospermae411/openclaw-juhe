@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**聚合聊天通道插件 - 为 OpenClaw 带来微信和企微集成**
+**微信/企微通道插件 - 为 OpenClaw 带来微信和企微集成**
 
 [![GitHub](https://img.shields.io/badge/GitHub-hanson%2Fopenclaw--juhe-blue)](https://github.com/hanson/openclaw-juhe)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -117,7 +117,7 @@ rm -rf ~/.openclaw/extensions/juhe
 mklink /D "C:\Users\你的用户名\.openclaw\extensions\juhe" "D:\code\projects\openclaw-juhe"
 
 # Git Bash / WSL
-ln -s "/d/code/聚合聊天/openclaw-juhe" ~/.openclaw/extensions/juhe
+ln -s "/d/code/projects/openclaw-juhe" ~/.openclaw/extensions/juhe
 ```
 
 #### 方式 3：修改 openclaw.json 配置
